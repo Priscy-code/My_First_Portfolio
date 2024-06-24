@@ -9,9 +9,6 @@ import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
-import java.lang.reflect.Array;
-import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -46,7 +43,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        startBtn=(Button)findViewById(R.id.btnStart);
+
+        startBtn = (Button) findViewById(R.id.btnStart);
 
         TimeTextView = findViewById(R.id.TimeTextView);
         ScoreTextView = findViewById(R.id.ScoreTextView);
@@ -146,7 +144,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         }.start();
-
 
     }
 }
