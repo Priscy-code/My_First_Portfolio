@@ -12,33 +12,26 @@
 // export default useWorkoutStore;
 
 // store.js
-import {create} from 'zustand';
+import { create } from 'zustand'; // Use named import
 
 const useWorkoutStore = create((set) => ({
-  workouts: [],
-
-  // Add a workout
+  exercises: [],
+  fetchExercises: async () => {
+    try {
+      const response = await fetch(
+        'https://wger.de/api/v2/exercise/?language=2&limit=100'
+      );
+      const data = await response.json();
+      set({ exercises: data.results });
+    } catch (error) {
+      console.error('Error fetching exercises:', error);
+    }
+  },
   addWorkout: (newWorkout) =>
     set((state) => ({
       workouts: [...state.workouts, newWorkout],
     })),
-
-  // Fetching exercise data (WGER API)
-  exercises: [],
-  fetchExercises: async () => {
-    const response = await fetch('https://wger.de/api/v2/exercise/');
-    const data = await response.json();
-    set({ exercises: data.results });
-  },
-
-  // Track progress
-  getTotalWorkouts: (state) => state.workouts.length,
-  getTotalWeightLifted: (state) =>
-    state.workouts.reduce(
-      (total, workout) =>
-        total + workout.exercises.reduce((sum, ex) => sum + ex.weight, 0),
-      0
-    ),
+  workouts: [],
 }));
 
 export default useWorkoutStore;

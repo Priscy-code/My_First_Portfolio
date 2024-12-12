@@ -10,6 +10,7 @@ const WorkoutLogger = () => {
   const [sets, setSets] = useState('');
   const [reps, setReps] = useState('');
   const [weight, setWeight] = useState('');
+  const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
     fetchExercises();
@@ -34,10 +35,29 @@ const WorkoutLogger = () => {
     setWeight('');
   };
 
+  // Filter exercises based on search query (by name or muscle group)
+  const filteredExercises = exercises.filter((exercise) =>
+    exercise.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    exercise.category.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
     <div className="max-w-md mx-auto p-4 bg-white shadow-md rounded-md">
       <h2 className="text-xl font-semibold mb-4">Log Workout</h2>
-      
+
+      {/* Search Bar */}
+      <div className="mb-4">
+        <label className="block text-gray-700">Search Exercises</label>
+        <input
+          type="text"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          placeholder="Search by name or muscle group"
+          className="w-full p-2 border rounded"
+        />
+      </div>
+
+      {/* Filtered Exercise List */}
       <div className="mb-4">
         <label className="block text-gray-700">Exercise</label>
         <select
@@ -46,11 +66,15 @@ const WorkoutLogger = () => {
           className="w-full p-2 border rounded"
         >
           <option value="" disabled>Select Exercise</option>
-          {exercises.map((exercise) => (
-            <option key={exercise.id} value={exercise.name}>
-              {exercise.name}
-            </option>
-          ))}
+          {filteredExercises.length > 0 ? (
+            filteredExercises.map((exercise) => (
+              <option key={exercise.id} value={exercise.name}>
+                {exercise.name} - {exercise.category.name}
+              </option>
+            ))
+          ) : (
+            <option disabled>No exercises found</option>
+          )}
         </select>
       </div>
 

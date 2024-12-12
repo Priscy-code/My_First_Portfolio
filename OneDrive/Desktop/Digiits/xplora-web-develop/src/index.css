@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* @layer base {
+  :root {
+    
+  }
+  .dark {
+
+  }
+} */
+@layer base {
+  @font-face {
+    font-family: 'steelfish' ;
+    src: url('@/assets/fonts/steelfish/steelfish.ttf') format('truetype');
+    font-weight: 300; 
+    font-style: normal;
+  }
+  @font-face {
+      font-family: 'sfpro';
+      src: url('@/assets/fonts/sfprodisplay/SF-Pro-Display-Light.otf') format('truetype');
+      font-weight: 300;
+      font-style: normal;
+  }
+    @font-face {
+      font-family: 'sfpro';
+      src: url('@/assets/fonts/sfprodisplay/SF-Pro-Display-Regular.otf') format('opentype');
+      font-weight: 400;
+      /* Regular */
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: 'sfpro';
+      src: url('@/assets/fonts/sfprodisplay/SF-Pro-Display-Bold.otf') format('opentype');
+      font-weight: 700;
+      /* Bold */
+      font-style: normal;
+    }
+
+        @font-face {
+          font-family: 'sfpro';
+          src: url('@/assets/fonts/sfprodisplay/SF-Pro-Display-Medium.otf') format('opentype');
+          font-weight: 500;
+          /* Bold */
+          font-style: normal;
+        }
+
+
+  .carousel-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    height: auto;
+  }
+  
+  .frame-image {
+    width: 100%;
+    height: auto;
+    /* object-cover: cover; */
+    border-radius: 0.5rem;
+    margin-bottom: 2px; 
+  }
+  
+  @keyframes carousel-up {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-50%);
+    }
+  }
+  
+  @keyframes carousel-down {
+    0% {
+      transform: translateY(-50%);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  
+  .animate-carousel-up {
+    animation: carousel-up 300s linear infinite;
+  }
+  
+  .animate-carousel-down {
+    animation: carousel-down 300s linear infinite;
+  }
+  
+  .grid {
+    height: 180vh; 
+  }
+  
+  .grid-cols-2 {
+    overflow: hidden;
+  }
+  
+
+  @font-face {
+    font-family: 'steelfish' ;
+    src: url('@/assets/fonts/steelfish/steelfish-bold.ttf') format('truetype');
+    font-weight: 700; 
+    font-style: normal;
+  }
+
+  * {
+    /* @apply border-border; */
+    /* font-family: 'Roboto', sans-serif; */
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  body {
+    /* @apply bg-background text-foreground; */
+    /* font-family: Arial, Helvetica, sans-serif; */
+    color: #1C1C1C;
+  }
+  
+}
+
+
