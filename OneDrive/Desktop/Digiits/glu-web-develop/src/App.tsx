@@ -14,6 +14,7 @@ import Events from './components/pages/Events';
 import ViewEvent from './components/pages/ViewEvent';
 import JobBoard from './components/pages/JobBoard';
 import PropertyListing from './components/pages/PropertyListing';
+import ManageProperty from './components/pages/ManageProperty';
 
 const App = () => {
   return (
@@ -34,6 +35,7 @@ const App = () => {
               <Route path='/events/:eventId' element={<ViewEvent />} />
               <Route path='/jobs' element={<JobBoard />} />
               <Route path='/property' element={<PropertyListing/>}/>
+              <Route path='/manage-property' element={<ManageProperty/>} />
             </Routes>
         </ActiveCommunityProvider>
       </Router>

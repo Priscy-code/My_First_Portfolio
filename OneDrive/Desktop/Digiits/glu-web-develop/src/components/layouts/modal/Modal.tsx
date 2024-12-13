@@ -22,8 +22,8 @@ const Modal = ({ isOpen, onClose, title, children, horizontalLine, leftContent, 
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 overflow-hidden">
-      <div className="flex w-full max-w-2xl flex-col m-4">
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 no-scrollbar overflow-auto">
+      <div className="flex w-full max-w-2xl flex-col m-4 no-scrollbar">
         <button
           className="text-white bg-custom-black w-1/6 p-3 mb-3 ml-auto rounded-full"
           onClick={onClose}
@@ -32,7 +32,7 @@ const Modal = ({ isOpen, onClose, title, children, horizontalLine, leftContent, 
         </button>
         <div
           ref={modalRef}
-          className="bg-white rounded-lg w-full mx-auto max-w-2xl py-2 max-h-[90vh] overflow-y-auto"
+          className="bg-white rounded-lg w-full mx-auto max-w-2xl py-2 max-h-[90vh] overflow-y-auto scrollbar-none"
         >
           <div className="flex justify-between items-center px-6 mt-5 top-0 bg-white z-10">
             {Searchbar}
@@ -48,14 +48,17 @@ const Modal = ({ isOpen, onClose, title, children, horizontalLine, leftContent, 
                 )}
                 <button
                   onClick={() => {
-                    if(onAction){
-                      console.log("onAction triggered")
-                    } else{
-                      console.log("onActiion")
+                    if (onAction) {
+                      console.log("onAction triggered");
+                    } else {
+                      console.log("onActiion");
                     }
                   }}
                   className="rounded-full text-white px-4 py-2 bg-custom-blue flex items-center gap-2"
-                > Apply <img src={ApplyIcon} alt="" className='' /></button>
+                >
+                  {" "}
+                  Apply <img src={ApplyIcon} alt="" className="" />
+                </button>
               </div>
             </div>
             {leftContent}
